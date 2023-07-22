@@ -78,7 +78,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: capstone
+          ECR_REPOSITORY: flask
           IMAGE_TAG: latest
         run: |
           docker build -t 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask:latest ./flask_app
