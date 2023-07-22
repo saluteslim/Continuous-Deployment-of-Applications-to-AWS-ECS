@@ -81,6 +81,6 @@ jobs:
           ECR_REPOSITORY: capstone
           IMAGE_TAG: latest
         run: |
-          docker build -t 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask ./flask_app
+          docker build -t 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask:latest ./flask_app
           docker tag flask:latest 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask:latest
           docker push 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask:latest
