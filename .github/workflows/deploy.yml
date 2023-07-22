@@ -1,45 +1,45 @@
-# name: Infrastructure and Container Build
+name: Infrastructure and Container Build
 
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-# env:
-#   AWS_REGION: eu-west-2
-#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#   ECR_REPOSITORY: 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask   # set this to your Amazon ECR repository name
-#   ECS_SERVICE: flask_app_demo                 # set this to your Amazon ECS service name
-#   ECS_CLUSTER: flask_app_demo                 # set this to your Amazon ECS cluster name
-#   ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
-#                                                # file, e.g. .aws/task-definition.json
-#   CONTAINER_NAME: flask           # set this to the name of the container in the
-#                                                # containerDefinitions section of your task definition
+env:
+  AWS_REGION: eu-west-2
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ECR_REPOSITORY: 277285677846.dkr.ecr.eu-west-2.amazonaws.com/flask   # set this to your Amazon ECR repository name
+  ECS_SERVICE: flask_app_demo                 # set this to your Amazon ECS service name
+  ECS_CLUSTER: flask_app_demo                 # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
+                                               # file, e.g. .aws/task-definition.json
+  CONTAINER_NAME: flask           # set this to the name of the container in the
+                                               # containerDefinitions section of your task definition
 
-# jobs:
-#   terraform:
-#     name: Terraform
-#     runs-on: ubuntu-latest
-#     environment: production
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    environment: production
 
-#     defaults:
-#       run:
-#         shell: bash
+    defaults:
+      run:
+        shell: bash
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-#       - name: Setup Terraform
-#         uses: hashicorp/setup-terraform@v1
-#         with:
-#           terraform_version: 1.4.6
-#           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.4.6
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-#       - name: Terraform Init
-#         run: terraform init
+      - name: Terraform Init
+        run: terraform init
 
 
 #       - name: Terraform Plan
